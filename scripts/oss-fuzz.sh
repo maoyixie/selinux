@@ -84,3 +84,7 @@ $CXX $CXXFLAGS $LIB_FUZZING_ENGINE checkpolicy-fuzzer.o checkpolicy/*.o "$DESTDI
 
 zip -j "$OUT/checkpolicy-fuzzer_seed_corpus.zip" checkpolicy/fuzz/min_pol.mls.conf
 cp checkpolicy/fuzz/checkpolicy-fuzzer.dict "$OUT/"
+
+# add
+$CC $CFLAGS -c -o policydbread-fuzzer.o libsepol/fuzz/policydbread-fuzzer.c
+$CXX $CXXFLAGS $LIB_FUZZING_ENGINE policydbread-fuzzer.o "$DESTDIR/usr/lib/libsepol.a" -o "$OUT/policydbread-fuzzer"
